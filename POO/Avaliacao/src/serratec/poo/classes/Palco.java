@@ -18,12 +18,14 @@ public class Palco {
         this.shows.add(show);
     }
 
-    public List<Artista> getArtistas() {
+    public void getArtistas() {
         List<Artista> artistas = new ArrayList<>();
         for (Show show : shows) {
             artistas.add(show.getArtista());
         }
-        return artistas;
+        for(Artista artista: artistas) {
+        	System.out.println("Artista: " + artista.getNome() + " - " + " Gênero: " + artista.getGenero());
+        }
     }
    
     public String getNome() {

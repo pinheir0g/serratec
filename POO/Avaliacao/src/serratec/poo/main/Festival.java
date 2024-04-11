@@ -34,6 +34,5 @@ public class Festival {
 		
 		System.out.println(palco1);
 		palco1.getShows();
-		//System.out.println(palco1.getArtistas());
 	}
 }

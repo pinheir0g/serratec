@@ -15,7 +15,6 @@ public abstract class Artista {
         return nome;
     }
 
-
     public Genero getGenero() {
         return genero;
     }
