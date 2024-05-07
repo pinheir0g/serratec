@@ -1,0 +1,40 @@
+h2{
+    font-family: cursive;
+}
+ul{
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+}
+
+li{
+    background-color: bisque;
+    width: 100px;
+    height: 100px;
+    margin: 5px;
+    padding: 5px;
+    font-family: Arial, Helvetica, sans-serif;
+    box-shadow: 3px 3px 6px;
+    text-align: center;
+}
+
+.nova{
+    border: 1px solid salmon;
+    border-radius: 4px;
+    padding: 10px;
+    width: fit-content;
+}
+
+li:hover{
+    transform: rotate(360deg);
+    transition: all 1s;
+    animation: rodar 3s ease-in-out 0 infinite forwards ;
+}
+@keyframes rodar{
+    from{
+        transform: rotate(0);
+    }
+    to{
+        transform: rotate(350deg);
+    }
+}

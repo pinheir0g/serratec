@@ -1,0 +1,22 @@
+p{
+    color: rebeccapurple;
+}
+
+#id{
+    color: brown;
+}
+
+.classe{
+    color:green;
+}
+
+/* Combinador de filhos  */
+p > strong{
+    background-color: aqua
+}
+
+/* Combinador irmão adjacente */
+
+p ~ strong{
+    background-color: aquamarine;
+}

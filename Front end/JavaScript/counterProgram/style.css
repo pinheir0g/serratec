@@ -1,0 +1,57 @@
+#paçocaCont,
+#shoppiCont{
+    display: block;
+    text-align: center;
+    font-size: 10em;
+    font-family: Helvetica;
+}
+
+#btnContainer{
+    text-align: center;
+}
+
+.buttons{
+    padding: 10px 20px;
+    font-size: 1.5em;
+    color: white;
+    background-color: hsl(214, 100%, 74%);
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.25s;
+}
+
+.buttons:hover{
+    background-color: hsl(214, 100%, 56%);
+}
+
+.content{
+    padding: 10%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 5%;
+}
+
+body{
+    background-image: url("/image.png");
+    
+    background-repeat: no-repeat;
+    background-position: 50%;
+    background-size: cover;
+    
+}
+
+/* Define a animação para subir */
+@keyframes subir {
+    from {
+        bottom: 0; /* Inicia no fundo da tela */
+    }
+    to {
+        bottom: 100%; /* Termina no topo da tela */
+    }
+}
+
+/* Aplica a animação */
+.subindo {
+    animation: subir 2s forwards; /* Duração de 2 segundos */
+}
