@@ -3,6 +3,7 @@ package br.org.serratec.biblioteca.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -33,13 +34,14 @@ public class PerfilController {
 
 	@DeleteMapping
 	public String deletePerfil(@RequestBody Perfil perfil) {
-		try {
-			perfilService.delete(perfil);
-			return "Deletado com sucesso!";
-		}catch(Exception e){
-			System.out.println(e);
-		}
-		return "Perfil não encontrado";
+		return perfilService.delete(perfil);
 	}
 
+	@DeleteMapping("/{id}")
+	public ResponseEntity<Integer> deletePerfilById(@PathVariable Integer id) {
+		if(perfilService.deleteById(id)) {
+			return ResponseEntity.ok(id);
+		}
+		return ResponseEntity.notFound().build();
+	}
 }

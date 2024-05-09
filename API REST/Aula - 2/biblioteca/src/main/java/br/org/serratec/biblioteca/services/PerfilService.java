@@ -3,7 +3,6 @@ package br.org.serratec.biblioteca.services;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import br.org.serratec.biblioteca.entities.Perfil;
@@ -31,18 +30,25 @@ public class PerfilService {
 	}
 
 	public String delete(Perfil perfil) {
-		try {
-			perfilRepository.delete(perfil);
-			return "Deletado com sucesso!";
+		if(perfilRepository.existsById(perfil.getPerfilId())) {
+			try {
+				perfilRepository.delete(perfil);
+				return "204 OK Deletado com sucesso!";
 
-		}catch(Exception e){
-			System.out.println(e);
+			}catch(Exception e){
+				System.out.println(e);
+			}
 		}
-		return "Perfil não encontrado";
+		return "404 Not Found Perfil não encontrado";
 	}
 
-	public void deleteById(Integer id) {
-		perfilRepository.deleteById(id);
+
+	public boolean deleteById(Integer id) {
+		if(perfilRepository.existsById(id)) {
+			perfilRepository.deleteById(id);
+			return true;
+		}
+		return false;
 	}
 
 	// Exercicio para casa: Implementar uma forma de retornar o resultado da
