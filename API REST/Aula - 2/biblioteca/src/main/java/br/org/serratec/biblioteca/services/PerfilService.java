@@ -10,6 +10,7 @@ import br.org.serratec.biblioteca.repositories.PerfilRepository;
 
 @Service
 public class PerfilService {
+
 	@Autowired
 	private PerfilRepository perfilRepository;
 
@@ -18,7 +19,7 @@ public class PerfilService {
 	}
 
 	public Perfil findById(Integer id) {
-		return perfilRepository.findById(id).orElseGet(null);
+		return perfilRepository.findById(id).orElse(null);
 	}
 
 	public Perfil save(Perfil perfil) {
@@ -29,30 +30,33 @@ public class PerfilService {
 		return perfilRepository.save(perfil);
 	}
 
-	public String delete(Perfil perfil) {
-		if(perfilRepository.existsById(perfil.getPerfilId())) {
-			try {
-				perfilRepository.delete(perfil);
-				return "204 OK Deletado com sucesso!";
-
-			}catch(Exception e){
-				System.out.println(e);
-			}
-		}
-		return "404 Not Found Perfil não encontrado";
-	}
-
-
-	public boolean deleteById(Integer id) {
-		if(perfilRepository.existsById(id)) {
-			perfilRepository.deleteById(id);
-			return true;
-		}
-		return false;
-	}
-
 	// Exercicio para casa: Implementar uma forma de retornar o resultado da
 	// deleção, retornando se o perfil foi deletado com sucesso ou não.
+
+	public Perfil delete(Perfil perfil) {
+		Perfil perfilExcluido = perfilRepository.findById(perfil.getPerfilId()).orElse(null);
+		try {
+			perfilRepository.delete(perfilExcluido);
+			if(perfil != null)
+				return perfilExcluido;
+		}catch(Exception e) {
+			System.out.println(e);
+		}
+		return perfilExcluido;
+	}
+
+	public Perfil deleteById(Integer id) {
+		Perfil perfil = perfilRepository.findById(id).orElse(null);
+		try {
+			perfilRepository.deleteById(id);
+			if(perfil != null)
+				return perfil;
+
+		}catch(Exception e) {
+			System.out.println(e);
+		}
+		return perfil;
+	}
 
 	// Retorna a quantidade de registros na tabela
 	public long count() {
