@@ -46,15 +46,15 @@ public class PerfilController {
 
 	@PutMapping
 	public ResponseEntity<Perfil> updatePerfil(@RequestBody Perfil perfil) {
-		return new ResponseEntity<>(perfilService.update(perfil), HttpStatus.CREATED);
+		return new ResponseEntity<>(perfilService.update(perfil), HttpStatus.OK);
 	}
 
 	@DeleteMapping
 	public ResponseEntity<Perfil> deletePerfil(@RequestBody Perfil perfil) {
 		if (perfilService.findById(perfil.getPerfilId()) != null) {
-			return new ResponseEntity<>(perfilService.delete(perfil), HttpStatus.OK);
+			return ResponseEntity.status(HttpStatus.OK).body(perfilService.delete(perfil));
 		}
-		return new ResponseEntity<>(perfilService.delete(perfil), HttpStatus.NOT_FOUND);
+		return ResponseEntity.status(HttpStatus.NOT_FOUND).body(perfilService.delete(perfil));
 	}
 
 	@DeleteMapping("/{id}")
