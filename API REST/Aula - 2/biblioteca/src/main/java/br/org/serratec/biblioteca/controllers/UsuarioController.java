@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.org.serratec.biblioteca.entities.Perfil;
 import br.org.serratec.biblioteca.entities.Usuario;
 import br.org.serratec.biblioteca.services.UsuarioService;
 
@@ -35,8 +36,12 @@ public class UsuarioController {
 	}
 	
 	@GetMapping("/{id}")
-	public ResponseEntity<Usuario> findById(@PathVariable Integer id){
-		return ResponseEntity.status(HttpStatus.OK).body(usuarioService.findById(id));
+	public ResponseEntity<Object> findById(@PathVariable Integer id){
+		Usuario usuario = usuarioService.findById(id);
+		if(usuario != null) {
+			return ResponseEntity.status(HttpStatus.OK).body(usuarioService.findById(id));
+		}
+		return ResponseEntity.status(HttpStatus.NOT_FOUND).body("{'Error': 'Usuario não encontrado'}");
 	}
 	
 	@PutMapping
