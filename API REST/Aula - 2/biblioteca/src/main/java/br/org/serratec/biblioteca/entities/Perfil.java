@@ -1,10 +1,15 @@
 package br.org.serratec.biblioteca.entities;
 
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -22,15 +27,20 @@ public class Perfil {
 	@Column(name = "descricao")
 	private String descricao;
 
+	@JsonIgnore
+	@OneToMany(mappedBy="perfil")
+	private List<Usuario> usuarios;
+
 	public Perfil() {
 		super();
 	}
 
-	public Perfil(Integer perfilId, String nome, String descricao) {
+	public Perfil(Integer perfilId, String nome, String descricao, List<Usuario> usuarios) {
 		super();
 		this.perfilId = perfilId;
 		this.nome = nome;
 		this.descricao = descricao;
+		this.usuarios = usuarios;
 	}
 
 	public Integer getPerfilId() {
@@ -57,4 +67,7 @@ public class Perfil {
 		this.descricao = descricao;
 	}
 
+	public List<Usuario> getUsuarios() {
+		return usuarios;
+	}
 }

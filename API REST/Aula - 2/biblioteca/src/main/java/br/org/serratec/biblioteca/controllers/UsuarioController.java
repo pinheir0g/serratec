@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.org.serratec.biblioteca.entities.Perfil;
 import br.org.serratec.biblioteca.entities.Usuario;
 import br.org.serratec.biblioteca.services.UsuarioService;
 
@@ -24,17 +23,17 @@ public class UsuarioController {
 
 	@Autowired
 	UsuarioService usuarioService;
-	
+
 	@PostMapping
 	public ResponseEntity<Usuario> saveUsuario(@RequestBody Usuario usuario){
 		return ResponseEntity.status(HttpStatus.CREATED).body(usuarioService.save(usuario));
 	}
-	
+
 	@GetMapping
 	public ResponseEntity<List<Usuario>> findAll(){
 		return ResponseEntity.status(HttpStatus.OK).body(usuarioService.findAll());
 	}
-	
+
 	@GetMapping("/{id}")
 	public ResponseEntity<Object> findById(@PathVariable Integer id){
 		Usuario usuario = usuarioService.findById(id);
@@ -43,12 +42,12 @@ public class UsuarioController {
 		}
 		return ResponseEntity.status(HttpStatus.NOT_FOUND).body("{'Error': 'Usuario não encontrado'}");
 	}
-	
+
 	@PutMapping
 	public ResponseEntity<Usuario> update(@RequestBody Usuario usuario){
 		return ResponseEntity.status(HttpStatus.OK).body(usuarioService.update(usuario));
 	}
-	
+
 	@DeleteMapping
 	public ResponseEntity<Object> delete(@RequestBody Usuario usuario){
 		if (usuarioService.findById(usuario.getUserId()) != null) {
@@ -56,7 +55,7 @@ public class UsuarioController {
 		}
 		return ResponseEntity.status(HttpStatus.NOT_FOUND).body("{'Error': 'Usuario não encontrado'}");
 	}
-	
+
 	@DeleteMapping("/{id}")
 	public ResponseEntity<Object> deleteById(@PathVariable Integer id){
 		if (usuarioService.findById(id) != null) {

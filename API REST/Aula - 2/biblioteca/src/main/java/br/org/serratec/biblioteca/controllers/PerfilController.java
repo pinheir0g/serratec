@@ -51,8 +51,12 @@ public class PerfilController {
 
 	@DeleteMapping
 	public ResponseEntity<Perfil> deletePerfil(@RequestBody Perfil perfil) {
-		if (perfilService.findById(perfil.getPerfilId()) != null) {
-			return ResponseEntity.status(HttpStatus.OK).body(perfilService.delete(perfil));
+		try {
+			if(perfilService.findById(perfil.getPerfilId()) != null) {
+				return ResponseEntity.status(HttpStatus.OK).body(perfilService.delete(perfil));
+			}
+		}catch(Exception e){
+			e.printStackTrace();
 		}
 		return ResponseEntity.status(HttpStatus.NOT_FOUND).body(perfilService.delete(perfil));
 	}
@@ -60,8 +64,12 @@ public class PerfilController {
 	@DeleteMapping("/{id}")
 	public ResponseEntity<Perfil> deletePerfilById(@PathVariable Integer id) {
 		Perfil perfilDeletado = perfilService.deleteById(id);
-		if (perfilDeletado != null) {
-			return new ResponseEntity<>(perfilDeletado, HttpStatus.OK);
+		try {
+			if(perfilDeletado != null) {
+				return new ResponseEntity<>(perfilDeletado, HttpStatus.OK);
+		}
+		}catch(Exception e) {
+			e.printStackTrace();
 		}
 		return new ResponseEntity<>(perfilDeletado, HttpStatus.NOT_FOUND);
 	}

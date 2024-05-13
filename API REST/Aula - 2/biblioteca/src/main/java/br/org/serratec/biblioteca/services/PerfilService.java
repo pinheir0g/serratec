@@ -49,10 +49,9 @@ public class PerfilService {
 	public Perfil deleteById(Integer id) {
 		Perfil perfil = perfilRepository.findById(id).orElse(null);
 		try {
-			perfilRepository.deleteById(id);
 			if(perfil != null)
+				perfilRepository.deleteById(id);
 				return perfil;
-
 		}catch(Exception e) {
 			System.out.println(e);
 		}
