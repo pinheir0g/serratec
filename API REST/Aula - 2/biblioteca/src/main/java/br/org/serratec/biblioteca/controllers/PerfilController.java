@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.org.serratec.biblioteca.dtos.PerfilResumidoDto;
 import br.org.serratec.biblioteca.entities.Perfil;
 import br.org.serratec.biblioteca.services.PerfilService;
 
@@ -29,6 +30,11 @@ public class PerfilController {
 		return new ResponseEntity<>(perfilService.findAll(), HttpStatus.OK);
 	}
 
+	@GetMapping("/perfil-resumido")
+	public ResponseEntity<List<PerfilResumidoDto>> findAllPerfilResumido() {
+		return new ResponseEntity<>(perfilService.findAllPerfilResumido(), HttpStatus.OK);
+	}
+
 	@GetMapping("/{id}")
 	public ResponseEntity<Perfil> findById(@PathVariable Integer id) {
 		Perfil perfil = perfilService.findById(id);
@@ -37,6 +43,15 @@ public class PerfilController {
 			return new ResponseEntity<>(perfil, HttpStatus.NOT_FOUND);
 		}
 		return ResponseEntity.ok(perfil);
+	}
+
+	@GetMapping("/perfil-resumido/{id}")
+	public ResponseEntity<PerfilResumidoDto> findByIdResumido(@PathVariable Integer id) {
+		PerfilResumidoDto perfilDto = perfilService.findByIdResumido(id);
+		if(perfilDto == null) {
+			return new ResponseEntity<>(perfilDto, HttpStatus.NOT_FOUND);
+		}
+		return new ResponseEntity<>(perfilDto, HttpStatus.OK);
 	}
 
 	@PostMapping
@@ -73,5 +88,4 @@ public class PerfilController {
 		}
 		return new ResponseEntity<>(perfilDeletado, HttpStatus.NOT_FOUND);
 	}
-
 }

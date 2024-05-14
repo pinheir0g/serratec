@@ -35,12 +35,11 @@ public class Perfil {
 		super();
 	}
 
-	public Perfil(Integer perfilId, String nome, String descricao, List<Usuario> usuarios) {
+	public Perfil(Integer perfilId, String nome, String descricao) {
 		super();
 		this.perfilId = perfilId;
 		this.nome = nome;
 		this.descricao = descricao;
-		this.usuarios = usuarios;
 	}
 
 	public Integer getPerfilId() {

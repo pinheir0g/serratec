@@ -22,7 +22,7 @@ import br.org.serratec.biblioteca.services.UsuarioService;
 public class UsuarioController {
 
 	@Autowired
-	UsuarioService usuarioService;
+	private UsuarioService usuarioService;
 
 	@PostMapping
 	public ResponseEntity<Usuario> saveUsuario(@RequestBody Usuario usuario){

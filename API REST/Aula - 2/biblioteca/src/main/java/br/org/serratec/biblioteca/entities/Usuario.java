@@ -29,8 +29,8 @@ public class Usuario {
 	private String userPassword;
 
 
-	@ManyToOne
-	@JoinColumn(name = "perfil_id")
+	@ManyToOne  // cardinalidade
+	@JoinColumn(name = "perfil_id", referencedColumnName = "") 	// ligação entre as tabelas, quando nome das colunas são iguais não é preciso o referencedColumnName
 	private Perfil perfil;
 
 	public Usuario() {
@@ -78,8 +78,8 @@ public class Usuario {
 		this.userPassword = userPassword;
 	}
 
-	public String getPerfil() {
-		return perfil.getNome() + " " + perfil.getDescricao();
+	public Perfil getPerfil() {
+		return perfil;
 	}
 
 	public void setPerfil(Perfil perfil) {
