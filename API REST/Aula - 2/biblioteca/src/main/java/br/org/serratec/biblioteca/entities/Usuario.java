@@ -1,6 +1,5 @@
 package br.org.serratec.biblioteca.entities;
 
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -9,10 +8,11 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 
 @Entity
-@Table(name="usuario")
+@Table(name = "usuario")
 public class Usuario {
 
 	@Id
@@ -21,26 +21,24 @@ public class Usuario {
 	private Integer userId;
 
 	@Column(name = "user_nome")
+	@NotBlank(message = "O nome não pode ser nulo")
 	private String userName;
 
-	@Column(name = "user_email", unique=true)
-	@Pattern(regexp="^[a-zA-Z0-9+&-]+(?:\\.[a-zA-Z0-9_+&-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$",
-	message="O formato esperado do email é: aaaaa@aaaa.aaaa")
+	@Column(name = "user_email", unique = true)
+	@Pattern(regexp = "^[a-zA-Z0-9+&-]+(?:\\.[a-zA-Z0-9_+&-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$", message = "O formato esperado do email é: aaaaa@aaaa.aaaa")
 	private String userEmail;
 
 	@Column(name = "user_password")
 	private String userPassword;
 
-	@ManyToOne  // cardinalidade
-	@JoinColumn(name = "perfil_id", referencedColumnName = "") 	// ligação entre as tabelas, quando nome das colunas são iguais não é preciso o referencedColumnName
+	@ManyToOne
+	@JoinColumn(name = "perfil_id")
 	private Perfil perfil;
 
 	public Usuario() {
-		super();
 	}
 
 	public Usuario(Integer userId, String userName, String userEmail, String userPassword, Perfil perfil) {
-		super();
 		this.userId = userId;
 		this.userName = userName;
 		this.userEmail = userEmail;

@@ -21,6 +21,9 @@ public class PerfilService {
 	@Autowired
 	private ModelMapper modelMapper;
 
+	@Autowired
+	EmailService emailService;
+
 	public List<Perfil> findAll() {
 		return perfilRepository.findAll();
 	}
@@ -45,12 +48,8 @@ public class PerfilService {
 	public PerfilResumidoDto findByIdResumido(Integer id) {
 		Perfil perfil = perfilRepository.findById(id).orElse(null);
 		PerfilResumidoDto perfilDto = null;
-		//if(perfil != null)
-		//try{
-			perfilDto = modelMapper.map(perfil, PerfilResumidoDto.class);
-		//}catch(IllegalArgumentException e) {
-		//	throw new IllegalArgumentException("Ocorreu uma exceção: ", e);
-		//}
+		perfilDto = modelMapper.map(perfil, PerfilResumidoDto.class);
+		emailService.enviarEmail("gv.pinheiro@outlook.com", "Cadastro de perfil",perfilDto.toString() );
 		return perfilDto;
 	}
 

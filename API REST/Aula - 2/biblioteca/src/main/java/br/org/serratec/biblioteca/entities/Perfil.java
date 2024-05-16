@@ -13,7 +13,7 @@ import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 
 @Entity
-@Table(name="perfil")
+@Table(name = "perfil")
 public class Perfil {
 
 	@Id
@@ -21,7 +21,7 @@ public class Perfil {
 	@Column(name = "perfil_id")
 	private Integer perfilId;
 
-	@NotBlank(message = "O nome precisa ser preenchido")
+	@NotBlank
 	@Column(name = "nome")
 	private String nome;
 
@@ -29,15 +29,13 @@ public class Perfil {
 	private String descricao;
 
 	@JsonIgnore
-	@OneToMany(mappedBy="perfil")
+	@OneToMany(mappedBy = "perfil")
 	private List<Usuario> usuarios;
 
 	public Perfil() {
-		super();
 	}
 
 	public Perfil(Integer perfilId, String nome, String descricao) {
-		super();
 		this.perfilId = perfilId;
 		this.nome = nome;
 		this.descricao = descricao;
@@ -70,4 +68,11 @@ public class Perfil {
 	public List<Usuario> getUsuarios() {
 		return usuarios;
 	}
+
+	@Override
+	public String toString() {
+		return "Perfil [perfilId=" + perfilId + ", nome=" + nome + ", descricao=" + descricao + ", usuarios=" + usuarios
+				+ "]";
+	}
+
 }

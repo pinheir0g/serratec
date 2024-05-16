@@ -49,11 +49,7 @@ public class PerfilController {
 	@GetMapping("/perfil-resumido/{id}")
 	public ResponseEntity<PerfilResumidoDto> findByIdResumido(@PathVariable Integer id) {
 		PerfilResumidoDto perfilDto = null;
-		// try {
 		perfilDto = perfilService.findByIdResumido(id);
-		// }catch(IllegalArgumentException e) {
-		// throw new IllegalArgumentException("Ocorreu uma exceção: " + e);
-		// }
 		if (perfilDto == null) {
 			return new ResponseEntity<>(perfilDto, HttpStatus.NOT_FOUND);
 		}

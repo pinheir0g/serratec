@@ -21,4 +21,10 @@ public class PerfilResumidoDto {
 		this.descricao = descricao;
 	}
 
+	@Override
+	public String toString() {
+		return "PerfilResumidoDto [nome=" + nome + ", descricao=" + descricao + "]";
+	}
+
+
 }
