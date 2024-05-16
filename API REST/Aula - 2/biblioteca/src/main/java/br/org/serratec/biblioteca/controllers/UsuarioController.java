@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.org.serratec.biblioteca.entities.Usuario;
 import br.org.serratec.biblioteca.services.UsuarioService;
+import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/usuarios")
@@ -25,7 +26,7 @@ public class UsuarioController {
 	private UsuarioService usuarioService;
 
 	@PostMapping
-	public ResponseEntity<Usuario> saveUsuario(@RequestBody Usuario usuario){
+	public ResponseEntity<Usuario> saveUsuario(@RequestBody @Valid Usuario usuario){
 		return ResponseEntity.status(HttpStatus.CREATED).body(usuarioService.save(usuario));
 	}
 
@@ -36,15 +37,11 @@ public class UsuarioController {
 
 	@GetMapping("/{id}")
 	public ResponseEntity<Object> findById(@PathVariable Integer id){
-		Usuario usuario = usuarioService.findById(id);
-		if(usuario != null) {
-			return ResponseEntity.status(HttpStatus.OK).body(usuarioService.findById(id));
-		}
-		return ResponseEntity.status(HttpStatus.NOT_FOUND).body("{'Error': 'Usuario não encontrado'}");
+		return ResponseEntity.status(HttpStatus.OK).body(usuarioService.findById(id));
 	}
 
 	@PutMapping
-	public ResponseEntity<Usuario> update(@RequestBody Usuario usuario){
+	public ResponseEntity<Usuario> update(@RequestBody @Valid Usuario usuario){
 		return ResponseEntity.status(HttpStatus.OK).body(usuarioService.update(usuario));
 	}
 

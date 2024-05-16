@@ -1,7 +1,6 @@
 package br.org.serratec.biblioteca.entities;
 
 import java.util.List;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Column;
@@ -11,6 +10,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
 
 @Entity
 @Table(name="perfil")
@@ -21,6 +21,7 @@ public class Perfil {
 	@Column(name = "perfil_id")
 	private Integer perfilId;
 
+	@NotBlank(message = "O nome precisa ser preenchido")
 	@Column(name = "nome")
 	private String nome;
 

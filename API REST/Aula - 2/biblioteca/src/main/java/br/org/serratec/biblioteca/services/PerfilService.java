@@ -38,15 +38,19 @@ public class PerfilService {
 	}
 
 	public Perfil findById(Integer id) {
-		return perfilRepository.findById(id).orElse(null);
+		//return perfilRepository.findById(id).orElse(null);
+		return perfilRepository.findById(id).get();
 	}
 
 	public PerfilResumidoDto findByIdResumido(Integer id) {
 		Perfil perfil = perfilRepository.findById(id).orElse(null);
 		PerfilResumidoDto perfilDto = null;
-		if(perfil != null) {
+		//if(perfil != null)
+		//try{
 			perfilDto = modelMapper.map(perfil, PerfilResumidoDto.class);
-		}
+		//}catch(IllegalArgumentException e) {
+		//	throw new IllegalArgumentException("Ocorreu uma exceção: ", e);
+		//}
 		return perfilDto;
 	}
 
@@ -57,9 +61,6 @@ public class PerfilService {
 	public Perfil update(Perfil perfil) {
 		return perfilRepository.save(perfil);
 	}
-
-	// Exercicio para casa: Implementar uma forma de retornar o resultado da
-	// deleção, retornando se o perfil foi deletado com sucesso ou não.
 
 	public Perfil delete(Perfil perfil) {
 		Perfil perfilExcluido = perfilRepository.findById(perfil.getPerfilId()).orElse(null);
