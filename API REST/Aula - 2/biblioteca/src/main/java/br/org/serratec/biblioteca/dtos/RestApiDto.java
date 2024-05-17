@@ -52,7 +52,4 @@ public class RestApiDto {
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
-
-
-
 }

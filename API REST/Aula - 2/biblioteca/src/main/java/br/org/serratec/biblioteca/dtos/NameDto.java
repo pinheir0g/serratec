@@ -19,5 +19,4 @@ public class NameDto {
 	public void setLastname(String lastName) {
 		this.lastName = lastName;
 	}
-
 }

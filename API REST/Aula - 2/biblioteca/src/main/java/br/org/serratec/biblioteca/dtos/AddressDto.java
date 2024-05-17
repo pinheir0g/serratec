@@ -38,7 +38,4 @@ public class AddressDto {
 	public void setGeolocation(GeolocationDto geolocation) {
 		this.geolocation = geolocation;
 	}
-
-
-
 }

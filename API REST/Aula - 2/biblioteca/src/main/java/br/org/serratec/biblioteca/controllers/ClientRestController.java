@@ -1,5 +1,7 @@
 package br.org.serratec.biblioteca.controllers;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,5 +23,10 @@ public class ClientRestController {
 	@GetMapping("/consulta-user/{id}")
 	public ResponseEntity<RestApiDto> consultaUser(@PathVariable Integer id){
 		return new ResponseEntity<>(clientRestService.consultaUser(id), HttpStatus.OK);
+	}
+
+	@GetMapping
+	public ResponseEntity<List<RestApiDto>> consultaAllUsers(){
+		return new ResponseEntity<>(clientRestService.consultaAllUsers(), HttpStatus.OK);
 	}
 }
