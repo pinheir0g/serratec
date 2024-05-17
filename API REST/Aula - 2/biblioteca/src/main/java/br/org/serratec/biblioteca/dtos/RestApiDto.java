@@ -6,6 +6,9 @@ public class RestApiDto {
 	private String email;
 	private String username;
 	private String password;
+	private NameDto name;
+	private AddressDto address;
+	private String phone;
 
 	public String getId() {
 		return id;
@@ -30,6 +33,24 @@ public class RestApiDto {
 	}
 	public void setPassword(String password) {
 		this.password = password;
+	}
+	public NameDto getName() {
+		return name;
+	}
+	public void setName(NameDto name) {
+		this.name = name;
+	}
+	public AddressDto getAddress() {
+		return address;
+	}
+	public void setAddress(AddressDto address) {
+		this.address = address;
+	}
+	public String getPhone() {
+		return phone;
+	}
+	public void setPhone(String phone) {
+		this.phone = phone;
 	}
 
 
