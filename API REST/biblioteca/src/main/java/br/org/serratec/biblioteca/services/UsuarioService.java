@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import br.org.serratec.biblioteca.dtos.UsuarioDTO;
 import br.org.serratec.biblioteca.entities.Usuario;
 import br.org.serratec.biblioteca.repositories.UsuarioRepository;
 
@@ -17,7 +18,6 @@ public class UsuarioService {
 	public List<Usuario> findAll(){
 		return usuarioRepository.findAll();
 	}
-
 	public Usuario findById(Integer id) {
 		//return usuarioRepository.findById(id).orElse(null);
 		return usuarioRepository.findById(id).get();
@@ -25,6 +25,10 @@ public class UsuarioService {
 
 	public Usuario save(Usuario usuario) {
 		return usuarioRepository.save(usuario);
+	}
+
+	public Usuario saveUsuarioDto(UsuarioDTO usuarioDTO) {
+		return usuarioRepository.save(new Usuario(usuarioDTO));
 	}
 
 	public Usuario update(Usuario usuario) {

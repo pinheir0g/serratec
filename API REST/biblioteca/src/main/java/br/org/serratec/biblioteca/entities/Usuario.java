@@ -1,5 +1,6 @@
 package br.org.serratec.biblioteca.entities;
 
+import br.org.serratec.biblioteca.dtos.UsuarioDTO;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -36,6 +37,12 @@ public class Usuario {
 	private Perfil perfil;
 
 	public Usuario() {
+	}
+	public Usuario(UsuarioDTO usuarioDTO) {
+		this.userName = usuarioDTO.userName();
+		this.userEmail = usuarioDTO.userEmail();
+		this.userPassword = usuarioDTO.userPassword();
+		this.perfil = usuarioDTO.perfil();
 	}
 
 	public Usuario(Integer userId, String userName, String userEmail, String userPassword, Perfil perfil) {

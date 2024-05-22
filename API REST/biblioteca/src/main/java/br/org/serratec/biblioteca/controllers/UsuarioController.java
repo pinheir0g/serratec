@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.org.serratec.biblioteca.dtos.UsuarioDTO;
 import br.org.serratec.biblioteca.entities.Usuario;
 import br.org.serratec.biblioteca.services.UsuarioService;
 import jakarta.validation.Valid;
@@ -28,6 +29,12 @@ public class UsuarioController {
 	@PostMapping
 	public ResponseEntity<Usuario> saveUsuario(@RequestBody @Valid Usuario usuario){
 		return ResponseEntity.status(HttpStatus.CREATED).body(usuarioService.save(usuario));
+	}
+
+
+	@PostMapping("/dto")
+	public ResponseEntity<Usuario> saveUsuarioDto(@RequestBody UsuarioDTO usuarioDTO){
+		return ResponseEntity.status(HttpStatus.CREATED).body(usuarioService.saveUsuarioDto(usuarioDTO));
 	}
 
 	@GetMapping

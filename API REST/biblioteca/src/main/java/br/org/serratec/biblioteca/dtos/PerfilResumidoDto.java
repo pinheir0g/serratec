@@ -25,6 +25,4 @@ public class PerfilResumidoDto {
 	public String toString() {
 		return "PerfilResumidoDto [nome=" + nome + ", descricao=" + descricao + "]";
 	}
-
-
 }
