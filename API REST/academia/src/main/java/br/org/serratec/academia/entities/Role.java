@@ -24,6 +24,10 @@ public class Role {
 	        this.nome = nome;
 	    }
 
+	 public Role(RoleEnum name) {
+		 this.nome = name;
+	    }
+
 	    public Integer getId() {
 	        return id;
 	    }
