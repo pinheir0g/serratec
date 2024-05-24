@@ -23,7 +23,7 @@ public class UserDetailImpl  implements UserDetails{
 		 * Associa as roles de um usuário a GrantedAuthorities
 		 * (forma como o Sprint trata os papéis de um usuário)
 		 */
-		return user.getRoles().stream().map(role -> new SimpleGrantedAuthority(role.getNome().name()))
+		return user.getRoles().stream().map(role -> new SimpleGrantedAuthority(role.getName().name()))
 				.collect(Collectors.toList());
 	}
 
