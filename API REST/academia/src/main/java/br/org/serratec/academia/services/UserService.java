@@ -22,50 +22,51 @@ import br.org.serratec.academia.repositories.UserRepository;
 
 @Service
 public class UserService {
-	 @Autowired
-	    private AuthenticationManager authenticationManager;
 
-	    @Autowired
-	    private JwtTokenService jwtTokenService;
+    @Autowired
+    private AuthenticationManager authenticationManager;
 
-	    @Autowired
-	    private UserRepository userRepository;
+    @Autowired
+    private JwtTokenService jwtTokenService;
 
-	    @Autowired
-		PasswordEncoder encoder;
+    @Autowired
+    private UserRepository userRepository;
 
-	    // Método responsável por autenticar um usuário e retornar um token JWT
-	    public JwtTokenRecord authenticateUser(CredenciaisLoginRecord credenciaisLoginRecord) {
-	        // Cria um objeto de autenticação com o email e a senha do usuário
-	        UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken =
-	                new UsernamePasswordAuthenticationToken(credenciaisLoginRecord.email(), credenciaisLoginRecord.password());
+    @Autowired
+	PasswordEncoder encoder;
 
-	        // Autentica o usuário com as credenciais fornecidas
-	        Authentication authentication = authenticationManager.authenticate(usernamePasswordAuthenticationToken);
+    // Método responsável por autenticar um usuário e retornar um token JWT
+    public JwtTokenRecord authenticateUser(CredenciaisLoginRecord credenciaisLoginRecord) {
+        // Cria um objeto de autenticação com o email e a senha do usuário
+        UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken =
+                new UsernamePasswordAuthenticationToken(credenciaisLoginRecord.email(), credenciaisLoginRecord.password());
 
-	        // Obtém o objeto UserDetails do usuário autenticado
-	        UserDetailImpl userDetails = (UserDetailImpl) authentication.getPrincipal();
+        // Autentica o usuário com as credenciais fornecidas
+        Authentication authentication = authenticationManager.authenticate(usernamePasswordAuthenticationToken);
 
-	        // Gera um token JWT para o usuário autenticado
-	       return new JwtTokenRecord(jwtTokenService.generateToken(userDetails));
-	    }
+        // Obtém o objeto UserDetails do usuário autenticado
+        UserDetailImpl userDetails = (UserDetailImpl) authentication.getPrincipal();
 
-	    public User createUser(UserRecord userRecord) {
+        // Gera um token JWT para o usuário autenticado
+       return new JwtTokenRecord(jwtTokenService.generateToken(userDetails));
+    }
 
-	    	Set<String> strRoles = userRecord.role();
-	    	List<Role> roles = new ArrayList<>();
+    public User createUser(UserRecord userRecord) {
 
-	    	for(String strRole : strRoles) {
-	    		Role role = new Role(RoleEnum.valueOf(strRole));
-	    		roles.add(role);
-	    	}
+    	Set<String> strRoles = userRecord.role();
+    	List<Role> roles = new ArrayList<>();
 
-	        User newUser = new User(userRecord.email(),
-						encoder.encode(userRecord.password()),
-						roles
-					);
+    	for(String strRole : strRoles) {
+    		Role role = new Role(RoleEnum.valueOf(strRole));
+    		roles.add(role);
+    	}
 
-	        // Salva o novo usuário no banco de dados
-	        return userRepository.save(newUser);
-	    }
+        User newUser = new User(userRecord.email(),
+					encoder.encode(userRecord.password()),
+					roles
+				);
+
+        // Salva o novo usuário no banco de dados
+        return userRepository.save(newUser);
+    }
 }

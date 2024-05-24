@@ -13,13 +13,14 @@ import br.org.serratec.academia.repositories.UserRepository;
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService{
 
-	@Autowired
-	UserRepository userRepository;
+    @Autowired
+    private UserRepository userRepository;
 
-	@Override
-	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		User user = userRepository.findByEmail(username).orElseThrow(
-				() -> new RuntimeException("Usuário não encontrado"));
-		return new UserDetailImpl(user);
-	}
+    @Override
+    public UserDetails loadUserByUsername(String username)
+    		throws UsernameNotFoundException {
+        User user = userRepository.findByEmail(username)
+        		.orElseThrow(() -> new RuntimeException("Usuário não encontrado."));
+        return new UserDetailImpl(user);
+    }
 }

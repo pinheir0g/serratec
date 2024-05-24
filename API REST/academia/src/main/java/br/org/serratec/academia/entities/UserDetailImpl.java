@@ -10,22 +10,27 @@ import org.springframework.security.core.userdetails.UserDetails;
 public class UserDetailImpl  implements UserDetails{
 
 	private static final long serialVersionUID = 1L;
+
 	private User user;
 
 	public UserDetailImpl(User user) {
 		this.user = user;
 	}
 
+	@Override
+	public Collection<? extends GrantedAuthority> getAuthorities() {
+		/*
+		 * Associa as roles de um usuário a GrantedAuthorities
+		 * (forma como o Sprint trata os papéis de um usuário)
+		 */
+		return user.getRoles().stream().map(role -> new SimpleGrantedAuthority(role.getNome().name()))
+				.collect(Collectors.toList());
+	}
+
 	public User getUser() {
 		return user;
 	}
 
-	@Override
-	public Collection<? extends GrantedAuthority> getAuthorities() {
-		return user.getRoles().stream().map(role ->
-			new SimpleGrantedAuthority(role.getNome().name()))
-				.collect(Collectors.toList());
-	}
 
 	@Override
 	public String getPassword() {
@@ -34,31 +39,26 @@ public class UserDetailImpl  implements UserDetails{
 
 	@Override
 	public String getUsername() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public boolean isAccountNonExpired() {
-		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 
 	@Override
 	public boolean isAccountNonLocked() {
-		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 
 	@Override
 	public boolean isCredentialsNonExpired() {
-		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 
 	@Override
 	public boolean isEnabled() {
-		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 }

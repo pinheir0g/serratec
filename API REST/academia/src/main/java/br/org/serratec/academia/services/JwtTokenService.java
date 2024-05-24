@@ -1,6 +1,5 @@
 package br.org.serratec.academia.services;
 
-
 import java.time.Instant;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
@@ -22,7 +21,7 @@ public class JwtTokenService {
     private static final String ISSUER = "serratec.org.br";
 
     public String generateToken(UserDetailImpl user) {
-    	try {
+        try {
             Algorithm algorithm = Algorithm.HMAC256(SECRET_KEY);
             return JWT.create()
                     .withIssuer(ISSUER)
@@ -36,7 +35,7 @@ public class JwtTokenService {
     }
 
     public String getSubjectFromToken(String token) {
-    	try {
+        try {
             Algorithm algorithm = Algorithm.HMAC256(SECRET_KEY);
             return JWT.require(algorithm)
                     .withIssuer(ISSUER)
