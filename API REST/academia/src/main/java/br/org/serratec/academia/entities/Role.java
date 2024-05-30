@@ -17,33 +17,33 @@ public class Role {
 	private Integer id;
 
 	@Enumerated(EnumType.STRING)
-    private RoleEnum name;
+	private RoleEnum name;
 
-	 public Role(Integer id, RoleEnum name) {
-	        this.id = id;
-	        this.name = name;
-	    }
+	public Role(Integer id, RoleEnum name) {
+		this.id = id;
+		this.name = name;
+	}
 
-	 public Role(RoleEnum name) {
-		 this.name = name;
-	    }
+	public Role(RoleEnum name) {
+		this.name = name;
+	}
 
-	 public Role() {
-	    }
+	public Role() {
+	}
 
-	    public Integer getId() {
-	        return id;
-	    }
+	public Integer getId() {
+		return id;
+	}
 
-	    public void setId(Integer id) {
-	        this.id = id;
-	    }
+	public void setId(Integer id) {
+		this.id = id;
+	}
 
-	    public RoleEnum getName() {
-	        return name;
-	    }
+	public RoleEnum getName() {
+		return name;
+	}
 
-	    public void setName(RoleEnum name) {
-	        this.name = name;
-	    }
+	public void setName(RoleEnum name) {
+		this.name = name;
+	}
 }

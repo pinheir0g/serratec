@@ -7,5 +7,4 @@ public record UserRecord(
 		String password,
 		Set<String> role
 		) {
-
 }
