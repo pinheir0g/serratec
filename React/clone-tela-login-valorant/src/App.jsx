@@ -1,4 +1,3 @@
-import './App.css'
 import Login from './Components/Login/Login.jsx'
 
 function App() {
