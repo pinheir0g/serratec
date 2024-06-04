@@ -4,7 +4,6 @@
     box-sizing: border-box;
     display: flex;
     height: 100%;
-    font-family: Arial, sans-serif;
     height: 100vh;
   }
   
@@ -26,7 +25,7 @@
 .logo {
   display: block;
   margin: 30px auto 70px;
-  height: 50px;
+  height: 35px;
 }
 
 .container h2 {
@@ -40,6 +39,8 @@
   margin-bottom: 10px;
   border: 1px solid #ccc;
   border-radius: 4px;
+  /* background: transparent; */
+  background-color:  rgba(186, 186, 186, 0.1);
 }
 
 .socialLogin {
@@ -84,6 +85,7 @@
 .checkbox {
   margin-right: 10px; 
   margin-bottom: 2px;
+
 }
 
 .submitBtn {

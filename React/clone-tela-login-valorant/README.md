@@ -1,8 +1,15 @@
-# React + Vite
+# Clone tela de Login do Valorant
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Esse projeto é a realização da P1 da matéria de React do Serratec, que consiste em clonar alguma tela de login a sua escolha e utilizar: 
 
-Currently, two official plugins are available:
+- Hooks:
+    - useState: para login e senha;
+    - useEffect: para verificar se login e senha estão corretos;
+- styles.module.css;
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Imagem utilizada para o clone:
+![tela valorant](/clone-tela-login-valorant/src/assets/referenciaClone.png)
+
+
+## Resultado do clone
+![tela clone](/clone-tela-login-valorant/src/assets/telaClone.png)
