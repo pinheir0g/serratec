@@ -8,8 +8,8 @@ Esse projeto é a realização da P1 da matéria de React do Serratec, que consi
 - styles.module.css;
 
 ## Imagem utilizada para o clone:
-![tela valorant](/clone-tela-login-valorant/src/assets/referenciaClone.png)
+![tela valorant](./src/assets/referenciaClone.png)
 
 
 ## Resultado do clone
-![tela clone](/clone-tela-login-valorant/src/assets/telaClone.png)
+![tela clone](./src/assets/telaClone.png)
