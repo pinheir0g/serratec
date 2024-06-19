@@ -39,7 +39,7 @@ export default function Perfil() {
         height: 100,
         width: 100,
         borderRadius: 50,
-        borderColor: 'white', // Adiciona cor à borda
+        borderColor: 'white',
         borderWidth: 2,
         backgroundColor: "aquamarine",
         marginBottom: 10,
