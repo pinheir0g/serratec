@@ -1,50 +1,38 @@
-import { StyleSheet, View, Text } from 'react-native';
+import { StyleSheet, View, Text, Image } from 'react-native';
 
-export default function Perfil() {
+type PerfilProps = {
+    profile: {
+        image: any,
+        title: string
+    }
+}
+
+const Perfil = ({ profile }: PerfilProps) => {
     return (
-      <View style={styles.container}>
-            <View style={styles.circleContainer}>
-                <View style={styles.perfil}></View>
-                <Text style={styles.texto}>Gustavo</Text>
-            </View>
-            <View style={styles.circleContainer}>
-                <View style={styles.perfil}></View>
-                <Text style={styles.texto}>Rapha</Text>
-            </View>
-            <View style={styles.circleContainer}>
-                <View style={styles.perfil}></View>
-                <Text style={styles.texto}>Bpstaude</Text>
-            </View>
-            <View style={styles.circleContainer}>
-                <View style={styles.perfil}></View>
-                <Text style={styles.texto}>Adicionar Novo</Text>
-            </View>
-      </View>
+        <View style={styles.container}>
+            <Image source={profile.image} style={styles.perfil} />
+            <Text style={styles.texto}>{profile.title}</Text>
+        </View>
     );
-  }
+}
 
-  const styles = StyleSheet.create({
+const styles = StyleSheet.create({
     container: {
-        flex: 0.4,
-        justifyContent: 'center',
         alignItems: 'center',
-        flexDirection: 'row',
-        flexWrap: 'wrap',
+        margin: 20,
     },
-    circleContainer: {
-        alignItems: 'center',
-        margin: 20, 
-    },
-    perfil:{
-        height: 100,
-        width: 100,
-        borderRadius: 50,
+    perfil: {
+        height: 130,
+        width: 130,
+        borderRadius: 100,
         borderColor: 'white',
         borderWidth: 2,
-        backgroundColor: "aquamarine",
         marginBottom: 10,
     },
-    texto:{
-        fontSize: 15
+    texto: {
+        fontSize: 15,
+        color: 'white',
     }
-  })
+})
+
+export default Perfil
