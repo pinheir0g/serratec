@@ -11,5 +11,9 @@ export const styles = StyleSheet.create({
         justifyContent: 'space-between',
         paddingHorizontal: 16,
         marginVertical: 16
+    },
+    listIconContainer:{
+        flexDirection: 'row',
+        gap: 7,
     }
 })
