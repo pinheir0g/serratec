@@ -4,7 +4,7 @@ export default function Button() {
     return (
       <View style={styles.container}>
            <TouchableOpacity>
-            <Text style={styles.texto}>Gerenciar Perfis</Text>
+            <Text style={styles.texto}>GERENCIAR PERFIS</Text>
            </TouchableOpacity>
       </View>
     );
@@ -19,5 +19,6 @@ export default function Button() {
     texto: {
       color: 'white',
       fontWeight: 'bold',
+
     }
   })

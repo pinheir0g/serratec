@@ -22,8 +22,8 @@ const styles = StyleSheet.create({
         margin: 20,
     },
     perfil: {
-        height: 130,
-        width: 130,
+        height: 125,
+        width: 125,
         borderRadius: 100,
         borderColor: 'white',
         borderWidth: 2,

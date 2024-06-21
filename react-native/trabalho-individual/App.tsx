@@ -15,6 +15,7 @@ export default function App() {
       <ImageBackground
         source={require('./assets/bg.png')}
         style={styles.background}>
+        <StatusBar/>
         <Text style={styles.texto}>Quem vai sair em uma aventura?</Text>
         <View style={styles.perfis}>
           {profiles && profiles.map((profile, index) => {
@@ -35,7 +36,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   perfis: {
-    flex: 0.65,
+    flex: 0.61,
     flexDirection: 'row',
     justifyContent: 'space-around',
     flexWrap: 'wrap',
