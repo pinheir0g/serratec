@@ -19,6 +19,7 @@ const {Navigator, Screen} = createDrawerNavigator<DrawerNavigation>()
 
 
 const DrawerComponent = () => {
+  
     return(
       <Navigator>
         <Screen name='Inicio' component={StackComponent} options={{title: "Inicio", headerShown: false}}/>
