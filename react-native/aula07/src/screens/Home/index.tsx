@@ -1,10 +1,11 @@
 import { View, Text, Button, ActivityIndicator, FlatList, TextInput, TouchableOpacity } from "react-native";
 import { styles } from './styles'
 import { deleteTaskById, getAllTasks, postTask, updateTask } from "../../services/tasksCRUD";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Tasks } from "../../types";
 import FontAwesome5 from '@expo/vector-icons/FontAwesome5';
 import api from "../../services/api";
+import { AuthCtx } from "../../contexts/UserContext";
 
 
 const Home = () => {
@@ -17,6 +18,7 @@ const Home = () => {
         isEdit: false,
         id: '0'
     });
+    const {logout} = useContext(AuthCtx);
 
     const getTasks = async () => {
         setLoading(true)
@@ -139,6 +141,7 @@ const Home = () => {
                     <Button title="Adicionar Tarefa" onPress={saveTask} />
                 )
                 }
+                <Button title="LOGOUT" onPress={logout}/>
             </View>
             <FlatList
                 data={allTasks}

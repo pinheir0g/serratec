@@ -1,14 +1,15 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import RotasPrivadas from "./RotasPrivadas";
 import RotasPublicas from "./RotasPublicas";
+import { AuthCtx } from "../contexts/UserContext";
 
 const Routes = () => {
-    
-    const [isLogado, setLogado] = useState(false);
+
+    const {signed} = useContext(AuthCtx);
 
     return (
         <>
-           {isLogado ? <RotasPrivadas/> : <RotasPublicas/>}
+            {signed ? <RotasPrivadas /> : <RotasPublicas />}
         </>
     )
 };
